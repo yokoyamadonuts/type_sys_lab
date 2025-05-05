@@ -1,4 +1,4 @@
-import { parse, parseArith } from "./tiny-ts-parser.ts";
+import { parseArith } from "./tiny-ts-parser.ts";
 
 type Term =
     | { tag: "true" }
