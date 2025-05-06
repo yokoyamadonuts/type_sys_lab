@@ -1,17 +1,6 @@
-import { parseArith } from "./tiny-ts-parser.ts";
+import { Term, Type } from "../types/terms.ts";
 
-type Term =
-    | { tag: "true" }
-    | { tag: "false" }
-    | { tag: "if"; cond: Term; thn: Term; els: Term }
-    | { tag: "number"; n: number }
-    | { tag: "add"; left: Term; right: Term };
-
-type Type =
-    | { tag: "Boolean" }
-    | { tag: "Number" };
-
-function typecheck(t: Term): Type {
+export function typecheck(t: Term): Type {
     switch (t.tag) {
         case "true":
             return { tag: "Boolean" };
@@ -36,5 +25,3 @@ function typecheck(t: Term): Type {
         }
     }
 }
-
-console.log(typecheck(parseArith("true ? 2 : 3")));
